@@ -24,6 +24,7 @@ otherwise, so they work individually (`node tests/test_lanes.js`) or via
 | `test_edge_lane.js` | HTTP/2 edge mirror lane |
 | `test_proxy_parking.js` | helper-port parking and recovery after cooldown |
 | `test_descramble_equivalence.js` | descrambled output is byte-identical to reference |
+| `test_bookwalker_naming.js` | BookWalker page names and ZIP entry order across double-digit pages |
 | `test_image_codec.js` | format/quality resolution, emitted type, extension |
 | `test_ui_panel.js` | panel readout, popovers, format picker and link |
 | `test_site_dispatch.js` | adapter selection per host, capture install, BookWalker fallback |

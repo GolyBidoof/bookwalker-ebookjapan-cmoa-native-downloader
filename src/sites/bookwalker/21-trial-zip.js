@@ -115,9 +115,10 @@
                     const S = (pl[j.no] && pl[j.no].Page && pl[j.no].Page.Size) ||
                              (pl[0] && pl[0].Page && pl[0].Page.Size);
                     blob = await cropToSize(blob, S);
+                    const pageName = bookWalkerPageName(pageIdx, j.fid);
                     okIdx.add(pageIdx);
                     fetched++;
-                    if (zip) zip.entries.push({ path: 'page-' + String(pageIdx).padStart(4, '0') + '.' + IMAGE_CODEC.ext, blob });
+                    if (zip) zip.entries.push({ path: pageName, blob });
                     if (mode === 'ocr' && mokuroSessionId) {
                         // Cover = first page: push it before OCR finishes so the
                         // folder + upload bar show life; deferred automation
@@ -131,7 +132,7 @@
                             }).catch(() => {});
                         }
                         try {
-                            await mokuroStreamPage(mokuroSessionId, blob, 'page-' + String(pageIdx).padStart(4, '0') + '.' + IMAGE_CODEC.ext, pageIdx);
+                            await mokuroStreamPage(mokuroSessionId, blob, pageName, pageIdx);
                             reportRunProgress(options, 'page-stream', {
                                 page: pageIdx, pageCount: okIdx.size, total: total
                             });

@@ -1,6 +1,6 @@
 <p><strong>Saves the book open in the <a href="https://bookwalker.jp">BookWalker</a> viewer</strong> as a ZIP or CBZ of original-resolution page images, without turning a page. It reads the viewer's own signed CloudFront URLs, fetches every page file directly, reverses BookWalker's <code>32x32</code> tile scramble in a worker pool, and crops each page to its declared size so no padding edge survives.</p>
 <ul>
-<li><strong>Original-resolution pages</strong>, laid out as <code>Series/Volume/page-0001.jpg</code>. Full editions, free and trial samples, and subscription viewers.</li>
+<li><strong>Original-resolution pages</strong>, saved at the ZIP root with names such as <code>0001 sourcename.jpg</code>. Full editions, free and trial samples, and subscription viewers.</li>
 <li><strong>Reading stats before you commit</strong>: Natively level with JLPT band colours, ratings and reader counts, plus Manga Kotoba vocabulary totals.</li>
 <li><strong>Optional Mokuro OCR</strong> through <a href="https://github.com/GolyBidoof/mokuro-bridge">mokuro-bridge</a>. Pages stream across as they are descrambled and come back as the <code>.cbz</code> / <code>.mokuro</code> / <code>.webp</code> trio that <a href="https://reader.mokuro.app/">reader.mokuro.app</a> reads, kept locally or uploaded to MEGA, Google Drive, OneDrive or WebDAV.</li>
 <li><strong>Resume, not restart</strong>: pages are cached as they arrive, an interrupted run continues where it stopped, and a partial failure names the pages that are missing.</li>

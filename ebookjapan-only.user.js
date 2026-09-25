@@ -2452,8 +2452,8 @@
         s = s.replace(/[ \t　]+/g, ' ').trim();  // tidy the whitespace the removal leaves behind
         return fsSafePath(s);
     }
-    // ZIPs are flat: every page sits at the archive root as page-NNNN.jpg, which
-    // is what manga readers expect. The series→volume nesting the bridge builds
+    // ZIPs are flat; the ZIP writer sorts pages by the number in each filename.
+    // The series→volume nesting the bridge builds
     // for OCR/upload runs happens bridge-side from the session title.
     function zipBaseName(sv, fallbackTitle) {
         return fsSafePath(sv && sv.series) || fsSafePath(fallbackTitle) || 'book';
@@ -2606,7 +2606,8 @@
     }
     const enc = new TextEncoder();
     function zipEntryNumber(path) {
-        const m = String(path || '').match(/page-(\d+)\./i);
+        const name = String(path || '').split('/').pop();
+        const m = name.match(/^(\d+)(?=[ .])/) || name.match(/page-(\d+)\./i);
         return m ? Number(m[1]) : Infinity;
     }
     async function buildStoreZip(entries, onProgress) {
